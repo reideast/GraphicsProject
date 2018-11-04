@@ -10,7 +10,7 @@
 			</Appearance>
             <Cone height="2.0" bottomRadius="0.7" side="TRUE" bttom="TRUE" />
 		</Shape>
-        <Transform rotation="0 0 1 3.14">
+        <Transform rotation="0 0 1 3.14" center="0 -1.0 0">
             <Shape USE="crystalHalf" />
         </Transform>
 	</Group>
