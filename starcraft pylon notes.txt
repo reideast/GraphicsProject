@@ -47,9 +47,11 @@ colours (sc1 remastered):
 
     RGB hex to RGB percentage: https://hewmc.blogspot.com/2012/12/rgb-to-percentage-converter.html
 
+descriptions:
 sc1 pylon
     ring:
-        either 2 or 4 sections with fairly small break
+        either 3 or 4 sections with fairly small break
+        looking at remastered version, looks like it's 3 sections
     fiddly bits:
         fiddly bits are pointed, tapering teeth things
         curve inward top and bottom
