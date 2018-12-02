@@ -2,19 +2,19 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.2//EN" "http://www.web3d.org/specifications/x3d-3.2.dtd">
 <X3D profile="Interchange" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
 <Scene>
-    <Viewpoint description="Isometric-Style Camera Position" fieldOfView="0.7854" position="0 80 200" orientation="1 0 0 -0.4" />
-    <!--<PointLight DEF="ambientInnerGlow" location="0 45 0" radius="100" intensity="1.0" />-->
+    <Viewpoint description="Isometric-Style Camera Position" fieldOfView="0.7854" position="0 60 200" orientation="1 0 0 -0.3" />
+    <PointLight DEF="ambientInnerGlow" location="0 45 0" radius="100" intensity="0.3" />
 
-    <Group DEF="debug">
-        <Transform translation="33.39 0 0">
-            <Shape DEF="debugSphere">
-                <Appearance>
-                    <Material />
-                </Appearance>
-                <Sphere radius="5" />
-            </Shape>
-        </Transform>
-    </Group>
+    <!--<Group DEF="debug">-->
+        <!--<Transform translation="33.39 0 0">-->
+            <!--<Shape DEF="debugSphere">-->
+                <!--<Appearance>-->
+                    <!--<Material />-->
+                <!--</Appearance>-->
+                <!--<Sphere radius="5" />-->
+            <!--</Shape>-->
+        <!--</Transform>-->
+    <!--</Group>-->
 
     <Group DEF="ringContainerRoot">
         <Transform DEF="ringContainer">
