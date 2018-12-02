@@ -2,6 +2,7 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.2//EN" "http://www.web3d.org/specifications/x3d-3.2.dtd">
 <X3D profile="Interchange" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
 <Scene>
+    <Viewpoint description="Isometric-Style Camera Position" fieldOfView="0.7854" position="0 60 200" orientation="1 0 0 -0.4" />
     <Group DEF="ring">
         <Transform translation="0 -25 0">
             <Shape>
@@ -14,12 +15,14 @@
             </Shape>
         </Transform>
     </Group>
-	<Group DEF="innerCrystal">
+	<Group DEF="glowingInnerCrystal">
 		<Shape DEF="crystalHalf">
 			<Appearance DEF="crystalColour">
 				<Material
-                    diffuseColor="0.3098 0.6549 0.8941"
+                    diffuseColor="0.5961 0.9843 1.0"
                     emissiveColor="0 0 0.5"
+                    ambientIntensity="0.9"
+                    shininess="0.9"
                 />
 			</Appearance>
             <Cone height="47.5" bottomRadius="14.70" side="true" bottom="true" />
@@ -33,7 +36,7 @@
 			<Appearance>
 				<Material
                     diffuseColor="0.3098 0.6549 0.8941"
-                    transparency="0.2"
+                    transparency="0.3"
                 />
 			</Appearance>
             <Cone height="50" bottomRadius="16.3" side="true" bottom="true" />
