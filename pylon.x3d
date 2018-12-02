@@ -3,14 +3,14 @@
 <X3D profile="Interchange" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
 <Scene>
     <Group DEF="ring">
-        <Transform translation="0 -1.1 0">
+        <Transform translation="0 -25 0">
             <Shape>
                 <Appearance DEF="gold">
                     <Material
                         diffuseColor="0.8588 0.7529 0.4745"
                     />
                 </Appearance>
-                <Cylinder radius="0.9" height="0.2" />
+                <Cylinder radius="33.39" height="12.94" />
             </Shape>
         </Transform>
     </Group>
@@ -22,9 +22,9 @@
                     emissiveColor="0 0 0.5"
                 />
 			</Appearance>
-            <Cone height="2.0" bottomRadius="0.7" side="true" bottom="true" />
+            <Cone height="47.5" bottomRadius="14.70" side="true" bottom="true" />
 		</Shape>
-        <Transform rotation="0 0 1 3.14" center="0 -1.0 0">
+        <Transform rotation="0 0 1 3.14" center="0 -23.75 0">
             <Shape USE="crystalHalf" />
         </Transform>
 	</Group>
@@ -36,9 +36,9 @@
                     transparency="0.2"
                 />
 			</Appearance>
-            <Cone height="2.2" bottomRadius="0.8" side="true" bottom="true" />
+            <Cone height="50" bottomRadius="16.3" side="true" bottom="true" />
 		</Shape>
-        <Transform rotation="0 0 1 3.14" center="0 -1.1 0">
+        <Transform rotation="0 0 1 3.14" center="0 -25 0">
             <Shape USE="outerCrystalHalf" />
         </Transform>
 	</Group>

@@ -70,8 +70,8 @@ sc2 pylon
         edges are very light/white-blue. each facet is an tall, uneven rhombus
 
 
-StarCraft uses an isometric projection [REF]. It was assumed it was an equal 120 degree projection, and a bounding box was drawn around the reference image with that projection, using the SSR30(deg) technique described in [REF] to make an isometric box out of simple distortions of a square. The bounding box was moved and resized and to touch at control points manually identified at the outer radius of the reference object. The box was measured to centimeter dimensions, and this was used as the ratio to construct the X3D object.
-One source of error was that the projection angle is a bit shallower than 120 degrees. With close inspection, it can be seen from the squared-off texture on the ground in the reference image that the bounding box does not match that angle. Additionally, a cylinder drawn with the dimensions of the bounding box does not match the object's "ring". However, measurements at this low pixel resolution were deemed to be precise enough (balanced against the effort required to re-work the bounding box in the tools utilised).
+StarCraft uses an isometric projection [REF Roper]. It was assumed it was an equal 120 degree projection, and a bounding box was drawn around the reference image with that projection, using the SSR30(deg) technique described in [REF Kovalenko] to make an isometric box out of simple distortions of a square. The bounding box was moved and resized and to touch at control points manually identified at the outer radius of the reference object. The box was measured to centimeter dimensions, and this was used as the ratio to construct the X3D object.
+One source of error was that the projection angle is a bit shallower than 120 degrees--it appears to be a dimetric projection [REF Kovalenko] With close inspection, it can be seen from the squared-off texture on the ground in the reference image that the bounding box does not match that angle. Additionally, a cylinder drawn with the dimensions of the bounding box does not match the object's "ring". However, measurements at this low pixel resolution were deemed to be precise enough (balanced against the effort required to re-work the bounding box in the tools utilised).
 
 source:
     [https://en.wikipedia.org/wiki/StarCraft_(video_game)#cite_note-43]
@@ -128,7 +128,15 @@ validate to pixel measure
 
 conversion to scale for use in X3D:
 take 11.2 cm to be 100 units (arbitrary)
-11.2/11.2 * 100 = 100
-1.83/11.2 * 100 = 16.3
-1.45/11.2 * 100 = 12.9
-3.74/11.2 * 100 = 33.4
+100
+    height of crystal is 11.2 cm
+    11.2 * 11.2/100 = 100
+16.3
+    radius of crystal is 1.83 cm
+    1.83 * 11.2/100 = 16.3
+12.9
+    height of ring is 1.45 cm
+    1.45 * 11.2/100 = 12.9
+33.4
+    radius of ring is 3.74 cm
+    3.74 * 11.2/100 = 33.4
