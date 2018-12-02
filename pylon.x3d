@@ -17,7 +17,7 @@
     <!--</Group>-->
 
     <Group DEF="ringContainerRoot">
-        <Transform DEF="ringContainer">
+        <Transform DEF="ringContainer" scale="0.9 0.9 0.9">
             <Transform DEF="ring" translation="0 0 0">
                 <Group DEF="ringSection"><!-- One third of the ring -->
                     <Shape DEF="ringSectionShape">
@@ -38,9 +38,12 @@
                     <Shape USE="ringSection"/>
                 </Transform>
 
+                <!-- TODO: colour rings -->
+            </Transform>
 
+            <Transform DEF="spikeContainer">
                 <Transform DEF="spikeSpindlyContainer">
-                    <Transform translation="35.19285714 0 0" scale="1 1 4" rotation="0 1 0 1.1" center="-34.39285714 0 0">
+                    <Transform translation="34.39285714 0 0" scale="1 1 4" rotation="0 1 0 3.04" center="-34.39285714 0 0">
                         <Shape DEF="spikeSpindly">
                             <Appearance USE="gold"/>
                             <Extrusion convex="false"
@@ -52,8 +55,12 @@
                     </Transform>
                 </Transform>
 
+                <Transform rotation="0 1 0 2.094"><!-- 120 degrees -->
+                    <Transform USE="spikeSpindlyContainer" />
+                </Transform>
+
                 <Transform DEF="spikeMidContainer">
-                    <Transform translation="34.39285714 0 0" rotation="0 1 0 2.2" center="-34.39285714 0 0">
+                    <Transform translation="34.39285714 0 0" rotation="0 1 0 2.0" center="-34.39285714 0 0">
                         <Shape DEF="spikeMid">
                             <Appearance USE="gold"/>
                             <Extrusion convex="false"
@@ -65,8 +72,17 @@
                     </Transform>
                 </Transform>
 
+                <Transform rotation="0 1 0 1.60">
+                    <Transform USE="spikeMidContainer" />
+                </Transform>
+
+                <Transform rotation="0 1 0 4.2">
+                    <Transform USE="spikeMidContainer" />
+                </Transform>
+
+
                 <Transform DEF="spikeBroadContainer">
-                    <Transform translation="34.39285714 0 0" rotation="0 1 0 3.3" center="-34.39285714 0 0">
+                    <Transform translation="34.39285714 0 0" rotation="0 1 0 .87" center="-34.39285714 0 0">
                         <Shape DEF="spikeBroad">
                             <Appearance USE="gold"/>
                             <Extrusion convex="false"
@@ -78,8 +94,12 @@
                     </Transform>
                 </Transform>
 
+                <Transform rotation="0 1 0 3.9">
+                    <Transform USE="spikeBroadContainer" />
+                </Transform>
+
                 <Transform DEF="spikeSquatContainer">
-                    <Transform translation="34.39285714 0 0" rotation="0 1 0 4.4" center="-34.39285714 0 0">
+                    <Transform translation="34.39285714 0 0" rotation="0 1 0 -0.6" center="-34.39285714 0 0">
                         <Shape DEF="spikeSquat">
                             <Appearance USE="gold"/>
                             <Extrusion convex="false"
@@ -91,8 +111,16 @@
                     </Transform>
                 </Transform>
 
+                <Transform rotation="0 1 0 2.094"><!-- 120 degrees -->
+                    <Transform USE="spikeSquatContainer" />
+                </Transform>
+
+                <Transform rotation="0 1 0 3.3">
+                    <Transform USE="spikeSquatContainer" />
+                </Transform>
+
                 <Transform DEF="spikeSkinnyContainer">
-                    <Transform translation="34.39285714 0 0" rotation="0 1 0 5.5" center="-34.39285714 0 0">
+                    <Transform translation="34.99285714 0 0" rotation="0 1 0 0.5" center="-34.99285714 0 0">
                         <Shape DEF="spikeSkinny">
                             <Appearance USE="gold"/>
                             <Extrusion convex="false"
@@ -104,13 +132,18 @@
                     </Transform>
                 </Transform>
 
+                <Transform rotation="0 1 0 3.9">
+                    <Transform USE="spikeSkinnyContainer" />
+                </Transform>
+
+
             </Transform>
         </Transform>
         <!-- Animation of Ring -->
-        <TimeSensor DEF="intervalRotateRing" loop="true" cycleInterval="6.0"/><!-- rotate at 1/6 rps forever -->
+        <TimeSensor DEF="intervalRotateRing" loop="true" cycleInterval="10.0"/><!-- rotate at 1/6 rps forever -->
         <OrientationInterpolator DEF="animateRotateRing" key="0 0.5 1" keyValue="0 1 0 0, 0 1 0 3.14, 0 1 0 6.28"/>
-        <!--<ROUTE fromNode="intervalRotateRing" fromField="fraction_changed" toNode="animateRotateRing" toField="set_fraction"/>-->
-        <!--<ROUTE fromNode="animateRotateRing" fromField="value_changed" toNode="ringContainer" toField="set_rotation"/>-->
+        <ROUTE fromNode="intervalRotateRing" fromField="fraction_changed" toNode="animateRotateRing" toField="set_fraction"/>
+        <ROUTE fromNode="animateRotateRing" fromField="value_changed" toNode="ringContainer" toField="set_rotation"/>
     </Group>
 
     <Group DEF="crystalContainerRoot">
