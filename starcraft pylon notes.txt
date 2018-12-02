@@ -1,0 +1,99 @@
+gif with a pylon it it, but not isolated
+https://i.imgur.com/FDsmqDR.gif
+clearer gif
+https://bnetcmsus-a.akamaihd.net/cms/gallery/IM5MNTT3HUGD1499111047052.gif
+sc2 pylon, shows its spinning rate
+https://bnetcmsus-a.akamaihd.net/cms/page_media/ZT67AGJZQT5M1509422059370.gif
+
+
+colours (orig sc1):
+    white-blue: #ADFCFC
+    darker blue: #638EF7
+colours (sc1 re-master):
+    crystal
+        white-blue: #B8FFFF
+        light blue: #98FBFF
+        mid blue: #4FA7E4
+        dark blue: #2A8DCF
+        darkest blue: #087AB4
+    ring:
+        metal shine: #E3BC8A
+        metal mid: #9C7241
+        metal dim: #9C7241
+        metal in shadow: #432200
+        orange colour: #EF7200
+
+sc1 pylon
+    ring:
+        either 2 or 4 sections with fairly small break
+    fiddly bits:
+        fiddly bits are pointed, tapering teeth things
+        curve inward top and bottom
+        4 per section (but may vary)
+        some barely project over ring
+        some longer
+    coloured ring:
+        extra ring about 1/2 height of ring around outside
+    crystal:
+        edges are bright white
+
+sc2 pylon
+    outer ring:
+        ring is unbroken with 4 curvy fiddly bits at cardinal directions
+    inner ring:
+        ring is 9/10 height of outer. There are two segments, each a little over 1/4 of circumference. Each has 1 fiddly bit in centre
+    crystal:
+        edges are very light/white-blue. each facet is an tall, uneven rhombus
+
+
+StarCraft uses an isometric projection [REF]. It was assumed it was an equal 120 degree projection, and a bounding box was drawn around the reference image with that projection, using the SSR30(deg) technique described in [REF] to make an isometric box out of simple distortions of a square. The bounding box was moved and resized and to touch at control points manually identified at the outer radius of the reference object. The box was measured to centimeter dimensions, and this was used as the ratio to construct the X3D object.
+One source of error was that the projection angle is a bit shallower than 120 degrees. With close inspection, it can be seen from the squared-off texture on the ground in the reference image that the bounding box does not match that angle. Additionally, a cylinder drawn with the dimensions of the bounding box does not match the object's "ring". However, measurements at this low pixel resolution were deemed to be precise enough (balanced against the effort required to re-work the bounding box in the tools utilised).
+
+source:
+[https://en.wikipedia.org/wiki/StarCraft_(video_game)#cite_note-43]
+http://www.thecomputershow.com/computershow/interviews/starcraftbillroper.htm
+Bill Roper, Senior Producer, StarCraft, Blizzard Entertainment
+"BR: The game play area is an isometric view - not top down like Warcraft. Also, all of the units in Starcraft are fully rendered, unlike the units in Warcraft which were rendered and then greatly retouched by hand, thus giving them a much more animated look. Starcraft units ave a very high tech and sleek look - very different than WarII."
+
+SSR30 source:
+drew cube sides with SSR30(deg) technique
+    see: https://medium.com/gravitdesigner/designers-guide-to-isometric-projection-6bfd66934fc7
+
+    
+    
+    
+lot of isometric formulae here:
+http://www.gandraxa.com/isometric_projection.xml
+
+
+measuring original.png
+y axis: crystal
+103 px top of crystal to bottom
+x axis: ring
+70 px bottom left to top right at 30 degrees
+z axis: ring
+69 px top left to bottom right at 30 degrees
+
+validate to cm/isometric measure
+70:103 = 0.67961165048543689320388349514563
+
+
+
+isometric bounding boxes (in PowerPoint drawing squares, lines, and parallelograms. using original.png)
+drew cube sides with SSR30(deg) technique
+    see: https://medium.com/gravitdesigner/designers-guide-to-isometric-projection-6bfd66934fc7
+height of crystal is 11.2 cm
+radius of crystal is 1.83 cm, diameter is 3.67 cm
+height of ring is 1.45 cm
+radius of ring is 3.74 cm, diameter is 7.48 cm
+
+validate to pixel measure
+7.48:11.2 = 0.66785714285714285714285714285714
+
+
+conversion to scale for use in X3D:
+take 11.2 cm to be 100 units (arbitrary)
+11.2/11.2 * 100 = 100
+1.83/11.2 * 100 = 16.3
+1.45/11.2 * 100 = 12.9
+3.74/11.2 * 100 = 33.4
