@@ -9,7 +9,7 @@ https://bnetcmsus-a.akamaihd.net/cms/page_media/ZT67AGJZQT5M1509422059370.gif
 colours (orig sc1):
     white-blue: #ADFCFC
     darker blue: #638EF7
-colours (sc1 re-master):
+colours (sc1 remastered):
     crystal
         white-blue: #B8FFFF
         light blue: #98FBFF
@@ -50,14 +50,25 @@ StarCraft uses an isometric projection [REF]. It was assumed it was an equal 120
 One source of error was that the projection angle is a bit shallower than 120 degrees. With close inspection, it can be seen from the squared-off texture on the ground in the reference image that the bounding box does not match that angle. Additionally, a cylinder drawn with the dimensions of the bounding box does not match the object's "ring". However, measurements at this low pixel resolution were deemed to be precise enough (balanced against the effort required to re-work the bounding box in the tools utilised).
 
 source:
-[https://en.wikipedia.org/wiki/StarCraft_(video_game)#cite_note-43]
-http://www.thecomputershow.com/computershow/interviews/starcraftbillroper.htm
+    [https://en.wikipedia.org/wiki/StarCraft_(video_game)#cite_note-43]
+    http://www.thecomputershow.com/computershow/interviews/starcraftbillroper.htm
+        Starcraft Producer Bill Roper of Blizzard
+        Interview by Al Giovetti
+        Preview references:
+        Christine Grech Wendin, PC Games, volume 3, number 8, August, 1996, pg. 36.
 Bill Roper, Senior Producer, StarCraft, Blizzard Entertainment
 "BR: The game play area is an isometric view - not top down like Warcraft. Also, all of the units in Starcraft are fully rendered, unlike the units in Warcraft which were rendered and then greatly retouched by hand, thus giving them a much more animated look. Starcraft units ave a very high tech and sleek look - very different than WarII."
 
+anectotal evidence:
+    https://gaming.stackexchange.com/questions/66192/what-is-the-name-of-the-view-in-games-like-diablo-3-starcraft-and-warcraft?rq=1
+
 SSR30 source:
 drew cube sides with SSR30(deg) technique
-    see: https://medium.com/gravitdesigner/designers-guide-to-isometric-projection-6bfd66934fc7
+    see:
+        https://medium.com/gravitdesigner/designers-guide-to-isometric-projection-6bfd66934fc7
+        Designer's Guide to isometric Projection
+        Sep 28, 2017
+        Alexander Kovalenko
 
     
     
