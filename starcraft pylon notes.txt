@@ -8,20 +8,44 @@ https://bnetcmsus-a.akamaihd.net/cms/page_media/ZT67AGJZQT5M1509422059370.gif
 
 colours (orig sc1):
     white-blue: #ADFCFC
+        0.6784 0.9882 0.9882
     darker blue: #638EF7
+        0.3882 0.5569 0.9686
 colours (sc1 remastered):
     crystal
         white-blue: #B8FFFF
+            0.7216 1.0 1.0
         light blue: #98FBFF
+            0.5961 0.9843 1.0
         mid blue: #4FA7E4
+            0.3098 0.6549 0.8941
         dark blue: #2A8DCF
+            0.1647 0.5529 0.8118
         darkest blue: #087AB4
-    ring:
-        metal shine: #E3BC8A
-        metal mid: #9C7241
-        metal dim: #9C7241
-        metal in shadow: #432200
-        orange colour: #EF7200
+            0.0314 0.4784 0.7059
+    ring (sc1remaster)
+        metal shadow: #776221
+            0.4667 0.3843 0.1294
+        metal drab: #BCB251
+            0.7373 0.6980 0.3176
+        metal mid: #DBC079
+            0.8588 0.7529 0.4745
+        metal shine: #F3EB98
+            0.9529 0.9216 0.5961
+        yellow colour: #C8D440
+            0.7843 0.8314 0.2510
+
+            (muddy screenshot):
+                metal shine: #E3BC8A
+                    0.8902 0.7373 0.5412
+                metal mid: #9C7241
+                    0.6118 0.4471 0.2549
+                metal in shadow: #432200
+                    0.2627 0.1333 0.0
+                orange colour: #EF7200
+                    0.9373 0.4471 0.0
+
+    RGB hex to RGB percentage: https://hewmc.blogspot.com/2012/12/rgb-to-percentage-converter.html
 
 sc1 pylon
     ring:
