@@ -3,6 +3,7 @@
 <X3D profile="Interchange" version="3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.2.xsd">
 <Scene>
     <Viewpoint description="Isometric-Style Camera Position" fieldOfView="0.7854" position="0 60 200" orientation="1 0 0 -0.4" />
+    <!--<PointLight DEF="ambientInnerGlow" location="0 20 0" radius="100" intensity="1.0" />-->
 
     <Group DEF="debug">
         <Transform translation="33.39 -25 0">
@@ -40,8 +41,8 @@
         <!-- Animation of Ring -->
         <TimeSensor DEF="intervalRotateRing" loop="true" cycleInterval="6.0"/><!-- rotate at 1/6 rps forever -->
         <OrientationInterpolator DEF="animateRotateRing" key="0 0.5 1" keyValue="0 1 0 0, 0 1 0 3.14, 0 1 0 6.28"/>
-        <ROUTE fromNode="intervalRotateRing" fromField="fraction_changed" toNode="animateRotateRing" toField="set_fraction"/>
-        <ROUTE fromNode="animateRotateRing" fromField="value_changed" toNode="ringContainer" toField="set_rotation"/>
+        <!--<ROUTE fromNode="intervalRotateRing" fromField="fraction_changed" toNode="animateRotateRing" toField="set_fraction"/>-->
+        <!--<ROUTE fromNode="animateRotateRing" fromField="value_changed" toNode="ringContainer" toField="set_rotation"/>-->
     </Group>
 
     <Group DEF="crystalContainerRoot">
@@ -56,7 +57,7 @@
                                 shininess="0.9"
                         />
                     </Appearance>
-                    <Cone height="47.5" bottomRadius="14.70" side="true" bottom="true"/>
+                    <Cone height="47.5" bottomRadius="14.70" side="true" bottom="false"/>
                 </Shape>
                 <Transform rotation="0 0 1 3.14" center="0 -23.75 0">
                     <Shape USE="crystalHalf"/>
@@ -70,7 +71,7 @@
                                 transparency="0.3"
                         />
                     </Appearance>
-                    <Cone height="50" bottomRadius="16.3" side="true" bottom="true"/>
+                    <Cone height="50" bottomRadius="16.3" side="true" bottom="false"/>
                 </Shape>
                 <Transform rotation="0 0 1 3.14" center="0 -25 0">
                     <Shape USE="outerCrystalHalf"/>
@@ -81,8 +82,8 @@
         <!-- Animation of Crystal -->
         <TimeSensor DEF="intervalRotateCrystal" loop="true" cycleInterval="12.0" /><!-- rotate at 1/12 rps forever -->
         <OrientationInterpolator DEF="animateRotateCrystal" key="0 0.5 1" keyValue="0 1 0 0, 0 1 0 3.14, 0 1 0 6.28"/>
-        <ROUTE fromNode="intervalRotateCrystal" fromField="fraction_changed" toNode="animateRotateCrystal" toField="set_fraction" />
-        <ROUTE fromNode="animateRotateCrystal" fromField="value_changed" toNode="crystalContainer" toField="set_rotation" />
+        <!--<ROUTE fromNode="intervalRotateCrystal" fromField="fraction_changed" toNode="animateRotateCrystal" toField="set_fraction" />-->
+        <!--<ROUTE fromNode="animateRotateCrystal" fromField="value_changed" toNode="crystalContainer" toField="set_rotation" />-->
     </Group>
 </Scene>
 </X3D>
