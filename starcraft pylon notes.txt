@@ -140,3 +140,9 @@ take 11.2 cm to be 100 units (arbitrary)
 33.4
     radius of ring is 3.74 cm
     3.74 * 11.2/100 = 33.4
+
+
+
+extrusion calc
+points along circle
+used parametric form of equation for Cartesian coordinates along circumference of circle: x = centre + radius * cos(angle), y = centre + radius * sin(angle)
