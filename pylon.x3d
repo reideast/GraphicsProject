@@ -64,17 +64,38 @@
                 </Transform>
             </Transform>
 
-            <!-- Animate a small point light around inside the crystal to give it an animated glow -->
-            <PointLight DEF="glowInsideCrystal" location="8 20 0" intensity="1.0" attenuation="0 0.1 0.009" />
-            <!--<SpotLight DEF="glowInsideCrystal" location="8 20 0" direction="0 0 -1" radius="100" intensity="1.0" attenuation="1 0 0" beamWidth="0.19635" cutOffAngle="0.3926" />-->
-            <!--<SpotLight DEF="glowInsideCrystal" location="8 20 0" direction="0 0 -1" radius="1" intensity="0.6" attenuation="1 0.01 0" beamWidth="0.19635" cutOffAngle="0.3926" />-->
-            <TimeSensor DEF="intervalMoveGlowInsideCrystal" loop="true" cycleInterval="8" /><!-- TODO: vastly slow this down, 20.0 maybe?-->
-            <!--<PositionInterpolator DEF="moveGlowInsideCrystal" key="0 0.5 0.6 0.75 1" keyValue="8 0 0, 2 20 0, 3 15 10, 5 10 12, 8 0 0"/>&lt;!&ndash; Key will "swoop" then "nudge" then "steadily move back to start" &ndash;&gt;-->
-            <!--<PositionInterpolator DEF="moveGlowInsideCrystal" key="0 0.5 0.6 0.75 1" keyValue="8 20 15, 2 40 15, 3 35 25, 5 30 27, 8 20 15"/>&lt;!&ndash; Key will "swoop" then "nudge" then "steadily move back to start" &ndash;&gt;-->
-            <!--<PositionInterpolator DEF="moveGlowInsideCrystal" key="0 0.5 0.6 0.75 1" keyValue="15 0 15, 7 30 7, -1 35 8, 1 30 10, 15 0 15"/>&lt;!&ndash; Key will "swoop" then "nudge" then "steadily move back to start" &ndash;&gt;-->
-            <PositionInterpolator DEF="moveGlowInsideCrystal" key="0 0.2 0.6 0.75 1" keyValue="15 0 15, 7 30 7, -1 35 8, 1 30 10, 15 0 15"/><!-- Key will "swoop" then "nudge" then "steadily move back to start" -->
-            <ROUTE fromNode="intervalMoveGlowInsideCrystal" fromField="fraction_changed" toNode="moveGlowInsideCrystal" toField="set_fraction" />
-            <ROUTE fromNode="moveGlowInsideCrystal" fromField="value_changed" toNode="glowInsideCrystal" toField="set_location" />
+            <!-- Animate a small point light around the crystal to give it an animated glow -->
+            <Transform>
+                <PointLight DEF="glowInsideCrystal" location="8 20 0" intensity="1.0" attenuation="0 0.1 0.009"/>
+                <TimeSensor DEF="intervalMoveGlowInsideCrystal" loop="true" cycleInterval="8"/>
+                <PositionInterpolator DEF="moveGlowInsideCrystal" key="0 0.2 0.6 0.75 1"
+                                      keyValue="15 0 15, 7 30 7, -1 35 8, 1 30 10, 15 0 15"/><!-- Key will "swoop" then "nudge" then "steadily move back to start" -->
+                <ROUTE fromNode="intervalMoveGlowInsideCrystal" fromField="fraction_changed" toNode="moveGlowInsideCrystal" toField="set_fraction"/>
+                <ROUTE fromNode="moveGlowInsideCrystal" fromField="value_changed" toNode="glowInsideCrystal" toField="set_location"/>
+            </Transform>
+
+            <!-- Animate a second point light around the crystal to give it an animated glow -->
+            <Transform rotation="0 1 0 2.3561">
+                <PointLight DEF="glowInsideCrystal2" location="8 20 0" intensity="1.0" attenuation="0 0.1 0.009"/>
+                <TimeSensor DEF="intervalMoveGlowInsideCrystal2" loop="true" cycleInterval="4"/>
+                <PositionInterpolator DEF="moveGlowInsideCrystal2" key="0 0.1 0.3 0.6 1"
+                                      keyValue="15 0 15, 7 30 7, -1 35 8, 1 30 10, 15 0 15"/><!-- Key will "swoop" then "nudge" then "steadily move back to start" -->
+                <ROUTE fromNode="intervalMoveGlowInsideCrystal2" fromField="fraction_changed" toNode="moveGlowInsideCrystal2" toField="set_fraction"/>
+                <ROUTE fromNode="moveGlowInsideCrystal2" fromField="value_changed" toNode="glowInsideCrystal2" toField="set_location"/>
+            </Transform>
+
+            <!-- Animate a second point light around the crystal to give it an animated glow -->
+            <!--<Transform rotation="0 0 1 2.3561">-->
+            <Transform translation="0 -40 0">
+                <Transform rotation="0 1 0 3.141">
+                    <PointLight DEF="glowInsideCrystal3" location="8 20 0" intensity="1.0" attenuation="0 0.1 0.009"/>
+                    <TimeSensor DEF="intervalMoveGlowInsideCrystal3" loop="true" cycleInterval="6"/>
+                    <PositionInterpolator DEF="moveGlowInsideCrystal3" key="0 0.1 0.3 0.6 1"
+                                          keyValue="15 0 15, 7 30 7, -1 35 8, 1 30 10, 15 0 15"/><!-- Key will "swoop" then "nudge" then "steadily move back to start" -->
+                    <ROUTE fromNode="intervalMoveGlowInsideCrystal3" fromField="fraction_changed" toNode="moveGlowInsideCrystal3" toField="set_fraction"/>
+                    <ROUTE fromNode="moveGlowInsideCrystal3" fromField="value_changed" toNode="glowInsideCrystal3" toField="set_location"/>
+                </Transform>
+            </Transform>
 
             <Transform DEF="debugPointLight">
                 <Shape>
