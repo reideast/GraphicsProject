@@ -9,6 +9,23 @@
     <Viewpoint description="Isometric-Style Camera Position" fieldOfView="0.7854" position="0 60 200" orientation="1 0 0 -0.3" />
     <PointLight DEF="ambientInnerGlow" location="0 45 0" radius="100" intensity="0.3" />
 
+    <Group DEF="axes">
+        <Transform rotation="0 0 1 1.57"><!-- y axis -->
+            <Transform DEF="axis" translation="0 15 0" rotation="0 0 1 -1.57" center="0 -15 0">
+                <Shape>
+                    <Appearance>
+                        <Material diffuseColor='0.8 1 1'/>
+                    </Appearance>
+                    <Cylinder radius="0.5" height="30"/>
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform USE="axis"/><!-- x axis -->
+        <Transform rotation="0 1 0 -1.57"><!-- x axis -->
+            <Transform USE="axis"/>
+        </Transform>
+    </Group>
+
     <Group DEF="ringContainerRoot">
         <!-- DEBUG <Transform DEF="ringContainer" scale="0.9 0.9 0.9" >-->
         <Transform DEF="ringContainer" scale="0 0 0">
