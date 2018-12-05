@@ -9,9 +9,9 @@
     <Viewpoint description="Isometric-Style Camera Position" fieldOfView="0.7854" position="0 60 200" orientation="1 0 0 -0.3" />
     <PointLight DEF="ambientInnerGlow" location="0 45 0" radius="100" intensity="0.3" />
 
-<Transform rotation="0 1 0 -1.0 "><!-- DEBUG: Rotate to the part of the shape I'm working on -->
+<Transform rotation="0 1 0 0"><!-- DEBUG: Rotate to the part of the shape I'm working on -->
 
-    <!--<Group DEF="axes">-->
+    <!--<Group DEF="axes">&lt;!&ndash; DEBUG &ndash;&gt;-->
         <!--<Transform rotation="0 0 1 1.57">&lt;!&ndash; y axis &ndash;&gt;-->
             <!--<Transform DEF="axis" translation="0 15 0" rotation="0 0 1 -1.57" center="0 -15 0">-->
                 <!--<Shape>-->
@@ -210,23 +210,25 @@
     <Group DEF="crystalContainerRoot">
         <Transform DEF="crystalContainer">
 
-            <Transform DEF="glowingInnerCrystal" translation="0 23.75 0">
-                <Shape DEF="crystalHalf">
-                    <Appearance DEF="crystalColour">
-                        <Material
-                                diffuseColor="0.5961 0.9843 1.0"
-                                emissiveColor="0 0 0.5"
-                                specularColor="0.7216 1.0 1.0"
-                                shininess="1.0"
-                                transparency="1"
-                        />
-                    </Appearance>
-                    <Cone height="47.5" bottomRadius="14.70" side="true" bottom="false"/>
-                </Shape>
-                <Transform rotation="0 0 1 3.14" center="0 -23.75 0">
-                    <Shape USE="crystalHalf"/>
-                </Transform>
-            </Transform>
+            <!--<Transform DEF="glowingInnerCrystal" translation="0 23.75 0">-->
+                <!--<Shape DEF="crystalHalf">-->
+                    <!--<Appearance DEF="crystalColour">-->
+                        <!--&lt;!&ndash;<Material&ndash;&gt;-->
+                                <!--&lt;!&ndash;diffuseColor="0.5961 0.9843 1.0"&ndash;&gt;-->
+                                <!--&lt;!&ndash;emissiveColor="0 0 0.5"&ndash;&gt;-->
+                                <!--&lt;!&ndash;specularColor="0.7216 1.0 1.0"&ndash;&gt;-->
+                                <!--&lt;!&ndash;shininess="1.0"&ndash;&gt;-->
+                        <!--<Material-->
+                                <!--diffuseColor="0.2 0.2 0.2"-->
+                                <!--transparency="1"-->
+                        <!--/>-->
+                    <!--</Appearance>-->
+                    <!--<Cone height="47.5" bottomRadius="14.70" side="true" bottom="false"/>-->
+                <!--</Shape>-->
+                <!--<Transform rotation="0 0 1 3.14" center="0 -23.75 0">-->
+                    <!--<Shape USE="crystalHalf"/>-->
+                <!--</Transform>-->
+            <!--</Transform>-->
 
             <!-- TODO: Move the lights into a second rotating frame of reference, going in the opposite direction of the crystal, different rate -->
             <!-- Animate a small point light around the crystal to give it an animated glow -->
@@ -279,21 +281,22 @@
             <Transform DEF="outerCrystalFacets" translation="0 0 0">
 
                 <!-- Tall, skinny. On x-axis. Almost to top -->
-                <Shape DEF="outerCrystalFacetsHalf">
+                <Shape>
                     <Appearance DEF="colourFaceCrystal">
                         <Material
                                 diffuseColor="0.3098 0.6549 0.8941"
-                                transparency="0.1"
+                                transparency="0.15"
                         />
                     </Appearance>
                     <IndexedFaceSet DEF="crystalFace4Vertex" coordIndex="0, 1, 2, 3, 0" solid="false">
                         <Coordinate point="16.3 0 -4, 15 -4 0, 16.3 3 8, 4.5 35 0" DEF="faceA"/>
                     </IndexedFaceSet>
                 </Shape>
-                <Shape DEF="outerCrystalFacetsLinesHalf">
+                <Shape>
                     <Appearance DEF="colourLineCrystal">
                         <Material
                                 emissiveColor="0.7216 1.0 1.0"
+                                transparency="0.3"
                         />
                         <LineProperties
                                 linewidthScaleFactor="4"
@@ -430,6 +433,201 @@
                     </IndexedLineSet>
                 </Shape>
 
+                <!-- Top facet from top tip to halfway down, just to right of faceD -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 0" solid="false">
+                        <Coordinate point="0 50 0, -12 15 7, -6.25 25 -5.5" DEF="faceK" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="0, 1, 2, -1">
+                        <Coordinate USE="faceK" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Upper equatorial just below faceK -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
+                        <Coordinate point="-6.25 25 -5.5, -12 15 7, -18.3 0 0, -10 10 -9" DEF="faceL" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="1, 2, 3, -1">
+                        <Coordinate USE="faceL" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Lower equatorial just below and left of faceL -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 0" solid="false">
+                        <Coordinate point="-10 10 -9, -18.3 0 0, -12 -2 -15" DEF="faceM" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="1, 2, -1">
+                        <Coordinate USE="faceM" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Bottom just below faceM and right of faceG -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
+                        <Coordinate point="-18.3 0 0, 0 -50 0, 0 -40 -4, -12 -2 -15" DEF="faceN" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="0, 1, 2, -1">
+                        <Coordinate USE="faceN" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Bottom capstone, front half, between face J and face N-->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 3 0, -1, 1 2 3" solid="false">
+                        <Coordinate point="4 -32 5, 0 -50 0, -13 -15 0, -4 -25 10" DEF="faceO" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="1 3 0, -1, 3 2">
+                        <Coordinate USE="faceO" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Bottom to equator, above faceO and to the left -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 2 3" solid="false">
+                        <Coordinate point="-4 -25 10, -13 -15 0, -18.3 0 0, -8 3 16" DEF="faceP" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="2 3 0 -1">
+                        <Coordinate USE="faceP" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Bottom to equator, above faceO and to the right -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 2 3 0" solid="false">
+                        <Coordinate point="-4 -25 10, 12 -1 13, 10 -15 6.5, 4 -32 5" DEF="faceQ" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="0 1 2 -1">
+                        <Coordinate USE="faceQ" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Between faceP & Q, up to equator -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 2 0" solid="false">
+                        <Coordinate point="12 -1 13, -8 3 16, -4 -25 10" DEF="faceR" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="0 1 -1">
+                        <Coordinate USE="faceR" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Spindly little facet that is between faceQ and faceI -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 2 3 0" solid="false" convex="false">
+                        <Coordinate point="10 -15 6.5, 12 -1 13, 8 25 2.5, 16.3 3 8" DEF="faceS" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="1 2 -1">
+                        <Coordinate USE="faceS" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Above faceP and below and to the right of faceL, just above equator -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 2 3 0" solid="false">
+                        <Coordinate point="-18.3 0 0, -12 15 7, -7 19 8, -8 3 16" DEF="faceT" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="1 2 3 -1">
+                        <Coordinate USE="faceT" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Tall and spindly, above faceT -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 2 0" solid="false">
+                        <Coordinate point="-12 15 7, 0 50 0, -7 19 8" DEF="faceU" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="2 1">
+                        <Coordinate USE="faceU" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Top piece, to the right of faceU -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 2 3 4 0" solid="false">
+                        <Coordinate point="0 50 0, 4.5 35 0, 8 25 2.5, 4 20 13, -4 30 5" DEF="faceV" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="2 3 4 -1">
+                        <Coordinate USE="faceV" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Below and to the right of faceV, down to equator -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 2 3 0" solid="false">
+                        <Coordinate point="4 20 13, -8 3 16, -7 19 8, -4 30 5" DEF="faceW" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="0 1 -1 2 0">
+                        <Coordinate USE="faceW" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- To the right of faceW, below faceV, left of faceS -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0 1 2 3 0" solid="false" convex="false">
+                        <Coordinate point="-8 3 16, 4 20 13, 8 25 2.5, 12 -1 13" DEF="faceX" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="3 1 -1">
+                        <Coordinate USE="faceX" />
+                    </IndexedLineSet>
+                </Shape>
 
             </Transform>
 
