@@ -189,7 +189,7 @@
     </Group>
 
     <Group DEF="crystalContainerRoot">
-        <Transform DEF="crystalContainer" rotation="0 1 0 -1"><!-- DEBUG: Rotate to the part of the shape I'm working on -->
+        <Transform DEF="crystalContainer" rotation="0 1 0 -3.3"><!-- DEBUG: Rotate to the part of the shape I'm working on -->
 
             <Transform DEF="glowingInnerCrystal" translation="0 23.75 0">
                 <Shape DEF="crystalHalf">
@@ -199,6 +199,7 @@
                                 emissiveColor="0 0 0.5"
                                 specularColor="0.7216 1.0 1.0"
                                 shininess="1.0"
+                                transparency="0.5"
                         />
                     </Appearance>
                     <Cone height="47.5" bottomRadius="14.70" side="true" bottom="false"/>
@@ -256,14 +257,16 @@
             <!--</Transform>-->
 
             <Transform DEF="outerCrystalFacets" translation="0 0 0">
+
+                <!-- Tall, skinny. On x-axis. Almost to top -->
                 <Shape DEF="outerCrystalFacetsHalf">
                     <Appearance DEF="colourFaceCrystal">
                         <Material
                                 diffuseColor="0.3098 0.6549 0.8941"
                         />
                     </Appearance>
-                    <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
-                        <Coordinate point="16.3 0 -4, 15 -4 0, 16.3 3 8, 4.5 35 0" DEF="CrystalCoords"/>
+                    <IndexedFaceSet DEF="crystalFace4Vertex" coordIndex="0, 1, 2, 3, 0" solid="false">
+                        <Coordinate point="16.3 0 -4, 15 -4 0, 16.3 3 8, 4.5 35 0" DEF="faceA"/>
                     </IndexedFaceSet>
                 </Shape>
                 <Shape DEF="outerCrystalFacetsLinesHalf">
@@ -275,16 +278,39 @@
                                 linewidthScaleFactor="4"
                         />
                     </Appearance>
-                    <IndexedLineSet coordIndex="0, 1, 2, 3, 0">
-                        <Coordinate USE="CrystalCoords" />
+                    <IndexedLineSet DEF="crystalLine4Vertex" coordIndex="0, 1, 2, 3, 0">
+                        <Coordinate USE="faceA" />
                     </IndexedLineSet>
                 </Shape>
 
-                <!-- Do not duplicate to bottom of crystal -->
-                <!--<Transform rotation="0 0 1 3.14" center="0 0 0">-->
-                    <!--<Shape USE="outerCrystalFacetsHalf"/>-->
-                    <!--<Shape USE="outerCrystalFacetsLinesHalf" />-->
-                <!--</Transform>-->
+                <!-- Squat, wide, covers 2/3 mid to top -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
+                        <Coordinate point="16.3 0 -4, 5 3 -16, 4 32 -6, 6 30 0" DEF="faceB" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="0, 1, 2, 3, -1">
+                        <Coordinate USE="faceB" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Squat, wide, covers 2/3 mid to top -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 0" solid="false">
+                        <Coordinate point="4 32 -6, 6 30 0, 0 50 0" DEF="faceC" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="0, 2, 1, -1">
+                        <Coordinate USE="faceC" />
+                    </IndexedLineSet>
+                </Shape>
+
             </Transform>
 
         </Transform>
