@@ -10,7 +10,8 @@
     <PointLight DEF="ambientInnerGlow" location="0 45 0" radius="100" intensity="0.3" />
 
     <Group DEF="ringContainerRoot">
-        <Transform DEF="ringContainer" scale="0.9 0.9 0.9">
+        <!-- DEBUG <Transform DEF="ringContainer" scale="0.9 0.9 0.9" >-->
+        <Transform DEF="ringContainer" scale="0 0 0">
             <Transform DEF="ring">
                 <Group DEF="ringSection"><!-- One third of the ring -->
                     <Shape DEF="ringSectionShape">
@@ -161,7 +162,8 @@
     </Group>
 
     <Group DEF="innerRingContainerRoot">
-        <Transform DEF="innerRingContainer" scale="0.9 0.9 0.9">
+        <!-- DEBUG <Transform DEF="innerRingContainer" scale="0.9 0.9 0.9">-->
+        <Transform DEF="innerRingContainer" scale="0 0 0">
             <Transform DEF="innerRing">
                 <Group DEF="innerRingSection"><!-- One half of the inner ring -->
                     <Shape DEF="innerRingSectionShape">
@@ -187,7 +189,8 @@
     </Group>
 
     <Group DEF="crystalContainerRoot">
-        <Transform DEF="crystalContainer">
+        <Transform DEF="crystalContainer" rotation="0 1 0 -1"><!-- DEBUG: Rotate to the part of the shape I'm working on -->
+
             <Transform DEF="glowingInnerCrystal" translation="0 23.75 0">
                 <Shape DEF="crystalHalf">
                     <Appearance DEF="crystalColour">
@@ -237,27 +240,60 @@
                 </Transform>
             </Transform>
 
-            <Transform DEF="outerCrystal" translation="0 25 0">
-                <Shape DEF="outerCrystalHalf">
-                    <Appearance>
+            <!--<Transform DEF="outerCrystal" translation="0 25 0">-->
+                <!--<Shape DEF="outerCrystalHalf">-->
+                    <!--<Appearance>-->
+                        <!--<Material-->
+                                <!--diffuseColor="0.3098 0.6549 0.8941"-->
+                                <!--transparency="0.3"-->
+                        <!--/>-->
+                    <!--</Appearance>-->
+                    <!--<Cone height="50" bottomRadius="16.3" side="true" bottom="false"/>-->
+                <!--</Shape>-->
+                <!--<Transform rotation="0 0 1 3.14" center="0 -25 0">-->
+                    <!--<Shape USE="outerCrystalHalf"/>-->
+                <!--</Transform>-->
+            <!--</Transform>-->
+
+            <Transform DEF="outerCrystalFacets" translation="0 0 0">
+                <Shape DEF="outerCrystalFacetsHalf">
+                    <Appearance DEF="colourFaceCrystal">
                         <Material
                                 diffuseColor="0.3098 0.6549 0.8941"
-                                transparency="0.3"
                         />
                     </Appearance>
-                    <Cone height="50" bottomRadius="16.3" side="true" bottom="false"/>
+                    <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
+                        <Coordinate point="16.3 0 -4, 15 -4 0, 16.3 3 8, 4.5 35 0" DEF="CrystalCoords"/>
+                    </IndexedFaceSet>
                 </Shape>
-                <Transform rotation="0 0 1 3.14" center="0 -25 0">
-                    <Shape USE="outerCrystalHalf"/>
-                </Transform>
+                <Shape DEF="outerCrystalFacetsLinesHalf">
+                    <Appearance DEF="colourLineCrystal">
+                        <Material
+                                emissiveColor="0.7216 1.0 1.0"
+                        />
+                        <LineProperties
+                                linewidthScaleFactor="4"
+                        />
+                    </Appearance>
+                    <IndexedLineSet coordIndex="0, 1, 2, 3, 0">
+                        <Coordinate USE="CrystalCoords" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Do not duplicate to bottom of crystal -->
+                <!--<Transform rotation="0 0 1 3.14" center="0 0 0">-->
+                    <!--<Shape USE="outerCrystalFacetsHalf"/>-->
+                    <!--<Shape USE="outerCrystalFacetsLinesHalf" />-->
+                <!--</Transform>-->
             </Transform>
+
         </Transform>
 
         <!-- Animation of Crystal -->
         <TimeSensor DEF="intervalRotateCrystal" loop="true" cycleInterval="12.0" /><!-- rotate at 1/12 rps forever -->
         <OrientationInterpolator DEF="animateRotateCrystal" key="0 0.5 1" keyValue="0 1 0 0, 0 1 0 3.14, 0 1 0 6.28"/>
         <ROUTE fromNode="intervalRotateCrystal" fromField="fraction_changed" toNode="animateRotateCrystal" toField="set_fraction" />
-        <ROUTE fromNode="animateRotateCrystal" fromField="value_changed" toNode="crystalContainer" toField="set_rotation" />
+        <!--<ROUTE fromNode="animateRotateCrystal" fromField="value_changed" toNode="crystalContainer" toField="set_rotation" />-->
     </Group>
 </Scene>
 </X3D>
