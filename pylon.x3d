@@ -348,13 +348,41 @@
                 <Shape>
                     <Appearance USE="colourFaceCrystal" />
                     <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
-                        <Coordinate point="5 3 -16, -10 10 -9, -10 -2 -9, 0 -13 -9" DEF="faceE" />
+                        <Coordinate point="5 3 -16, -10 10 -9, -12 -2 -15, 8 -13 -11" DEF="faceE" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="1, 2, 3, 0, -1">
+                        <Coordinate USE="faceE" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Equatorial facet below faceB -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
+                        <Coordinate point="16.3 0 -4, 5 3 -16, 8 -13 -11, 9 -15 -10" DEF="faceF" />
                     </IndexedFaceSet>
                 </Shape>
                 <Shape>
                     <Appearance USE="colourLineCrystal" />
                     <IndexedLineSet coordIndex="0, 3, 2, -1">
-                        <Coordinate USE="faceE" />
+                        <Coordinate USE="faceF" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Lower facet below faceE, 2/3 to bottom tip -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
+                        <Coordinate point="9 -15 -10, 8 -13 -11, -12 -2 -15, 0 -40 -4" DEF="faceG" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="2, 3, 0, -1">
+                        <Coordinate USE="faceG" />
                     </IndexedLineSet>
                 </Shape>
 
