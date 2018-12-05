@@ -10,26 +10,27 @@
     <PointLight DEF="ambientInnerGlow" location="0 45 0" radius="100" intensity="0.3" />
 
 <Transform rotation="0 1 0 -1.0 "><!-- DEBUG: Rotate to the part of the shape I'm working on -->
-    <Group DEF="axes">
-        <Transform rotation="0 0 1 1.57"><!-- y axis -->
-            <Transform DEF="axis" translation="0 15 0" rotation="0 0 1 -1.57" center="0 -15 0">
-                <Shape>
-                    <Appearance>
-                        <Material diffuseColor='0.8 1 1'/>
-                    </Appearance>
-                    <Cylinder radius="0.5" height="30"/>
-                </Shape>
-            </Transform>
-        </Transform>
-        <Transform USE="axis"/><!-- x axis -->
-        <Transform rotation="0 1 0 -1.57"><!-- x axis -->
-            <Transform USE="axis"/>
-        </Transform>
-    </Group>
+
+    <!--<Group DEF="axes">-->
+        <!--<Transform rotation="0 0 1 1.57">&lt;!&ndash; y axis &ndash;&gt;-->
+            <!--<Transform DEF="axis" translation="0 15 0" rotation="0 0 1 -1.57" center="0 -15 0">-->
+                <!--<Shape>-->
+                    <!--<Appearance>-->
+                        <!--<Material diffuseColor='0.8 1 1'/>-->
+                    <!--</Appearance>-->
+                    <!--<Cylinder radius="0.5" height="30"/>-->
+                <!--</Shape>-->
+            <!--</Transform>-->
+        <!--</Transform>-->
+        <!--<Transform USE="axis"/>&lt;!&ndash; x axis &ndash;&gt;-->
+        <!--<Transform rotation="0 1 0 -1.57">&lt;!&ndash; x axis &ndash;&gt;-->
+            <!--<Transform USE="axis"/>-->
+        <!--</Transform>-->
+    <!--</Group>-->
 
     <Group DEF="ringContainerRoot">
-        <!-- DEBUG <Transform DEF="ringContainer" scale="0.9 0.9 0.9" >-->
-        <Transform DEF="ringContainer" scale="0 0 0">
+        <Transform DEF="ringContainer" scale="0.9 0.9 0.9" >
+        <!--<Transform DEF="ringContainer" scale="0 0 0">&lt;!&ndash; DEBUG &ndash;&gt;-->
             <Transform DEF="ring">
                 <Group DEF="ringSection"><!-- One third of the ring -->
                     <Shape DEF="ringSectionShape">
@@ -173,15 +174,15 @@
             </Transform>
         </Transform>
         <!-- Animation of Ring -->
-        <TimeSensor DEF="intervalRotateRing" loop="true" cycleInterval="12.0"/><!-- rotate at 1/10 rps forever -->
+        <TimeSensor DEF="intervalRotateRing" loop="true" cycleInterval="30.0"/><!-- rotate at 1/10 rps forever -->
         <OrientationInterpolator DEF="animateRotateRing" key="0 0.5 1" keyValue="0 1 0 0, 0 1 0 3.14, 0 1 0 6.28"/>
         <ROUTE fromNode="intervalRotateRing" fromField="fraction_changed" toNode="animateRotateRing" toField="set_fraction"/>
         <ROUTE fromNode="animateRotateRing" fromField="value_changed" toNode="ringContainer" toField="set_rotation"/>
     </Group>
 
     <Group DEF="innerRingContainerRoot">
-        <!-- DEBUG <Transform DEF="innerRingContainer" scale="0.9 0.9 0.9">-->
-        <Transform DEF="innerRingContainer" scale="0 0 0">
+        <Transform DEF="innerRingContainer" scale="0.9 0.9 0.9">
+        <!--<Transform DEF="innerRingContainer" scale="0 0 0">&lt;!&ndash; DEBUG &ndash;&gt;-->
             <Transform DEF="innerRing">
                 <Group DEF="innerRingSection"><!-- One half of the inner ring -->
                     <Shape DEF="innerRingSectionShape">
@@ -217,7 +218,7 @@
                                 emissiveColor="0 0 0.5"
                                 specularColor="0.7216 1.0 1.0"
                                 shininess="1.0"
-                                transparency="0.5"
+                                transparency="1"
                         />
                     </Appearance>
                     <Cone height="47.5" bottomRadius="14.70" side="true" bottom="false"/>
@@ -282,6 +283,7 @@
                     <Appearance DEF="colourFaceCrystal">
                         <Material
                                 diffuseColor="0.3098 0.6549 0.8941"
+                                transparency="0.1"
                         />
                     </Appearance>
                     <IndexedFaceSet DEF="crystalFace4Vertex" coordIndex="0, 1, 2, 3, 0" solid="false">
@@ -434,10 +436,10 @@
         </Transform>
 
         <!-- Animation of Crystal -->
-        <TimeSensor DEF="intervalRotateCrystal" loop="true" cycleInterval="12.0" /><!-- rotate at 1/12 rps forever -->
+        <TimeSensor DEF="intervalRotateCrystal" loop="true" cycleInterval="8.0" /><!-- rotate at 1/12 rps forever -->
         <OrientationInterpolator DEF="animateRotateCrystal" key="0 0.5 1" keyValue="0 1 0 0, 0 1 0 3.14, 0 1 0 6.28"/>
         <ROUTE fromNode="intervalRotateCrystal" fromField="fraction_changed" toNode="animateRotateCrystal" toField="set_fraction" />
-        <!--<ROUTE fromNode="animateRotateCrystal" fromField="value_changed" toNode="crystalContainer" toField="set_rotation" />-->
+        <ROUTE fromNode="animateRotateCrystal" fromField="value_changed" toNode="crystalContainer" toField="set_rotation" />
     </Group>
 
 </Transform><!-- DEBUG rotate -->
