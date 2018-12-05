@@ -9,6 +9,7 @@
     <Viewpoint description="Isometric-Style Camera Position" fieldOfView="0.7854" position="0 60 200" orientation="1 0 0 -0.3" />
     <PointLight DEF="ambientInnerGlow" location="0 45 0" radius="100" intensity="0.3" />
 
+<Transform rotation="0 1 0 -2.3 "><!-- DEBUG: Rotate to the part of the shape I'm working on -->
     <Group DEF="axes">
         <Transform rotation="0 0 1 1.57"><!-- y axis -->
             <Transform DEF="axis" translation="0 15 0" rotation="0 0 1 -1.57" center="0 -15 0">
@@ -206,7 +207,7 @@
     </Group>
 
     <Group DEF="crystalContainerRoot">
-        <Transform DEF="crystalContainer" rotation="0 1 0 0"><!-- DEBUG: Rotate to the part of the shape I'm working on -->
+        <Transform DEF="crystalContainer">
 
             <Transform DEF="glowingInnerCrystal" translation="0 23.75 0">
                 <Shape DEF="crystalHalf">
@@ -226,6 +227,7 @@
                 </Transform>
             </Transform>
 
+            <!-- TODO: Move the lights into a second rotating frame of reference, going in the opposite direction of the crystal, different rate -->
             <!-- Animate a small point light around the crystal to give it an animated glow -->
             <Transform>
                 <PointLight DEF="glowInsideCrystal" location="8 20 0" intensity="1.0" attenuation="0 0.1 0.009"/>
@@ -366,5 +368,8 @@
         <ROUTE fromNode="intervalRotateCrystal" fromField="fraction_changed" toNode="animateRotateCrystal" toField="set_fraction" />
         <!--<ROUTE fromNode="animateRotateCrystal" fromField="value_changed" toNode="crystalContainer" toField="set_rotation" />-->
     </Group>
+
+</Transform><!-- DEBUG rotate -->
+
 </Scene>
 </X3D>
