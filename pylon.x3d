@@ -206,7 +206,7 @@
     </Group>
 
     <Group DEF="crystalContainerRoot">
-        <Transform DEF="crystalContainer" rotation="0 1 0 -3.3"><!-- DEBUG: Rotate to the part of the shape I'm working on -->
+        <Transform DEF="crystalContainer" rotation="0 1 0 0"><!-- DEBUG: Rotate to the part of the shape I'm working on -->
 
             <Transform DEF="glowingInnerCrystal" translation="0 23.75 0">
                 <Shape DEF="crystalHalf">
@@ -314,7 +314,7 @@
                     </IndexedLineSet>
                 </Shape>
 
-                <!-- Squat, wide, covers 2/3 mid to top -->
+                <!-- Cap piece, above faceB -->
                 <Shape>
                     <Appearance USE="colourFaceCrystal" />
                     <IndexedFaceSet coordIndex="0, 1, 2, 0" solid="false">
@@ -325,6 +325,34 @@
                     <Appearance USE="colourLineCrystal" />
                     <IndexedLineSet coordIndex="0, 2, 1, -1">
                         <Coordinate USE="faceC" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Large face covering the entire back, top -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
+                        <Coordinate point="0 50 0, 4 32 -6, 5 3 -16, -10 10 -9" DEF="faceD" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="0, 3, 2, -1">
+                        <Coordinate USE="faceD" />
+                    </IndexedLineSet>
+                </Shape>
+
+                <!-- Equatorial facet below faceD -->
+                <Shape>
+                    <Appearance USE="colourFaceCrystal" />
+                    <IndexedFaceSet coordIndex="0, 1, 2, 3, 0" solid="false">
+                        <Coordinate point="5 3 -16, -10 10 -9, -10 -2 -9, 0 -13 -9" DEF="faceE" />
+                    </IndexedFaceSet>
+                </Shape>
+                <Shape>
+                    <Appearance USE="colourLineCrystal" />
+                    <IndexedLineSet coordIndex="0, 3, 2, -1">
+                        <Coordinate USE="faceE" />
                     </IndexedLineSet>
                 </Shape>
 
