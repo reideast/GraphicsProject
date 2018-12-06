@@ -174,7 +174,7 @@
             </Transform>
         </Transform>
         <!-- Animation of Ring -->
-        <TimeSensor DEF="intervalRotateRing" loop="true" cycleInterval="30.0"/><!-- rotate at 1/10 rps forever -->
+        <TimeSensor DEF="intervalRotateRing" loop="true" cycleInterval="30.0"/>
         <OrientationInterpolator DEF="animateRotateRing" key="0 0.5 1" keyValue="0 1 0 0, 0 1 0 3.14, 0 1 0 6.28"/>
         <ROUTE fromNode="intervalRotateRing" fromField="fraction_changed" toNode="animateRotateRing" toField="set_fraction"/>
         <ROUTE fromNode="animateRotateRing" fromField="value_changed" toNode="ringContainer" toField="set_rotation"/>
@@ -201,7 +201,7 @@
             </Transform>
         </Transform>
         <!-- Animation of Inner Ring -->
-        <TimeSensor DEF="intervalRotateInnerRing" loop="true" cycleInterval="10.0"/>
+        <TimeSensor DEF="intervalRotateInnerRing" loop="true" cycleInterval="6.0"/>
         <OrientationInterpolator DEF="animateRotateInnerRing" key="0 0.5 1" keyValue="0 1 0 6.28, 0 1 0 3.14, 0 1 0 0"/>
         <ROUTE fromNode="intervalRotateInnerRing" fromField="fraction_changed" toNode="animateRotateInnerRing" toField="set_fraction"/>
         <ROUTE fromNode="animateRotateInnerRing" fromField="value_changed" toNode="innerRingContainer" toField="set_rotation"/>
@@ -285,7 +285,7 @@
                     <Appearance DEF="colourFaceCrystal">
                         <Material
                                 diffuseColor="0.3098 0.6549 0.8941"
-                                transparency="0.15"
+                                transparency="0.0"
                         />
                     </Appearance>
                     <IndexedFaceSet DEF="crystalFace4Vertex" coordIndex="0, 1, 2, 3, 0" solid="false">
@@ -296,8 +296,8 @@
                     <Appearance DEF="colourLineCrystal">
                         <Material
                                 emissiveColor="0.7216 1.0 1.0"
-                                transparency="0.3"
-                        />
+                                transparency="0.0"
+                        /><!-- TOOD: grab colour the lines are at 0.4 transparency, and apply that colour at 0.0 transparency -->
                         <LineProperties
                                 linewidthScaleFactor="4"
                         />
@@ -634,7 +634,7 @@
         </Transform>
 
         <!-- Animation of Crystal -->
-        <TimeSensor DEF="intervalRotateCrystal" loop="true" cycleInterval="8.0" /><!-- rotate at 1/12 rps forever -->
+        <TimeSensor DEF="intervalRotateCrystal" loop="true" cycleInterval="13.0" />
         <OrientationInterpolator DEF="animateRotateCrystal" key="0 0.5 1" keyValue="0 1 0 0, 0 1 0 3.14, 0 1 0 6.28"/>
         <ROUTE fromNode="intervalRotateCrystal" fromField="fraction_changed" toNode="animateRotateCrystal" toField="set_fraction" />
         <ROUTE fromNode="animateRotateCrystal" fromField="value_changed" toNode="crystalContainer" toField="set_rotation" />
